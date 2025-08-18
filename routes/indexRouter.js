@@ -1,14 +1,12 @@
 const { Router } = require("express");
 const indexRouter = Router();
 
-indexRouter.get("/:category", (req, res) => {
-  console.log(req.params);
-  res.end();
+indexRouter.get("/category/:category", (req, res) => {
+  res.render("category");
 });
 
-indexRouter.get("/:item", (req, res) => {
-  console.log(req.params);
-  res.end();
+indexRouter.get("/item/:item", (req, res) => {
+  res.render("item");
 });
 
 module.exports = { indexRouter };
