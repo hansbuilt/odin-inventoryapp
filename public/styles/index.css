@@ -1,0 +1,14 @@
+body {
+  background-color: black;
+}
+
+table {
+  color: #00ff00;
+}
+
+table,
+td {
+  border: 1px dashed #00ff00;
+  border-collapse: collapse;
+  padding: 2px 5px;
+}

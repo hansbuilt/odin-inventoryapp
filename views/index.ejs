@@ -1,5 +1,16 @@
 <html>
+  <head>
+    <link rel="stylesheet" href="/styles/index.css" />
+  </head>
   <body>
-    <div>This is my inventory app index</div>
+    <table>
+      <% catData.map((cat) => { %>
+      <tr>
+        <td><%= cat.id %></td>
+        <td><%= cat.category_name %></td>
+      </tr>
+
+      <% }) %>
+    </table>
   </body>
 </html>
