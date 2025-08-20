@@ -1,5 +1,21 @@
 <html>
+  <head>
+    <link rel="stylesheet" href="/styles/index.css" />
+  </head>
   <body>
-    <div>This is a category page</div>
+    <table>
+      <tr>
+        <th>Product SKU</th>
+        <th>Product Name</th>
+        <th>Edit</th>
+      </tr>
+      <% data.forEach(prod => { %>
+      <tr>
+        <td><%= prod.sku %></td>
+        <td><%= prod.product_name %></td>
+        <td><button>tbd</button></td>
+      </tr>
+
+      <% }) %>
   </body>
 </html>

@@ -4,10 +4,16 @@
   </head>
   <body>
     <table>
-      <% catData.map((cat) => { %>
+      <tr>
+        <th>Category ID</th>
+        <th>Category Name</th>
+        <th>Edit</th>
+      </tr>
+      <% catData.forEach(cat => { %>
       <tr>
         <td><%= cat.id %></td>
         <td><%= cat.category_name %></td>
+        <td><button>tbd</button></td>
       </tr>
 
       <% }) %>
