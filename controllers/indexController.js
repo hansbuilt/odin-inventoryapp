@@ -1,15 +1,14 @@
 const queries = require("../db/queries");
 
-const getCategories = async (req, res) => {
+async function getCategories() {
   try {
     const result = await queries.getAllCategories();
-    if (!result) return res.status(404).send("No categories returned");
     return result;
   } catch (err) {
     console.error(err);
-    res.status(500).send("Server error");
+    throw err;
   }
-};
+}
 
 async function getProductsByCategory(categoryId) {
   try {
