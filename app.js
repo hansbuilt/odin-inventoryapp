@@ -8,13 +8,19 @@ const {
 } = require("./routes/indexRouter");
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-
 app.use(express.static(path.join(__dirname, "public")));
-
 app.use("/", indexRouter);
 
-app.get("/", (req, res) => {
-  res.render("index", { catData: catData });
+const indexController = require("./controllers/indexController");
+
+app.get("/", async (req, res) => {
+  try {
+    const catData = await indexController.getCategories();
+    res.render("index", { catData });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Server error");
+  }
 });
 
 const PORT = 3000;
