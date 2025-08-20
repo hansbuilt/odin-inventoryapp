@@ -1,5 +1,7 @@
 const { Router } = require("express");
 
+const indexController = require("../controllers/indexController");
+
 const itemData = {
   1: {
     id: "1",
@@ -21,18 +23,38 @@ const catData = [
 
 const indexRouter = Router();
 
-indexRouter.get("/category/:category", (req, res) => {
-  res.render("category");
+indexRouter.get("/category/:category_id", async (req, res) => {
+  const categoryId = req.params.category_id;
+  try {
+    const data = await indexController.getProductsByCategory(categoryId);
+    res.render("category", { data });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Server error");
+  }
 });
 
-indexRouter.get("/item/:item", (req, res) => {
-  const itemID = req.params.item;
-  const item = itemData[itemID];
-  if (!item) {
-    return res.status(404).send("Item not found");
-  }
+indexRouter.get("/product/:product_id", async (req, res) => {
+  const productId = req.params.product_id;
 
-  res.render("item", { item });
+  try {
+    const data = await indexController.getProduct(productId);
+    console.log(data);
+    res.render("product", { data });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Server error");
+  }
 });
 
 module.exports = { indexRouter, itemData, catData };
+
+// app.get("/", async (req, res) => {
+//   try {
+//     const catData = await indexController.getCategories();
+//     res.render("index", { catData });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).send("Server error");
+//   }
+// });
