@@ -26,8 +26,10 @@ const indexRouter = Router();
 indexRouter.get("/category/:category_id", async (req, res) => {
   const categoryId = req.params.category_id;
   try {
-    const data = await indexController.getProductsByCategory(categoryId);
-    res.render("category", { data });
+    const prodData = await indexController.getProductsByCategory(categoryId);
+    const catData = await indexController.getCategory(categoryId);
+
+    res.render("category", { prodData, catData });
   } catch (err) {
     console.log(err);
     res.status(500).send("Server error");

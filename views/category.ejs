@@ -3,17 +3,20 @@
     <link rel="stylesheet" href="/styles/index.css" />
   </head>
   <body>
+    <h3><a href="/">Home</a> -> <%= catData.category_name %></h3>
     <table>
       <tr>
         <th>Product SKU</th>
         <th>Product Name</th>
         <th>Edit</th>
+        <th>Link</th>
       </tr>
-      <% data.forEach(prod => { %>
+      <% prodData.forEach(prod => { %>
       <tr>
         <td><%= prod.sku %></td>
         <td><%= prod.product_name %></td>
         <td><button>tbd</button></td>
+        <td><a href="/product/<%= prod.product_id %>">Link</a></td>
       </tr>
 
       <% }) %>

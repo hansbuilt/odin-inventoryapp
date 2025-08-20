@@ -3,17 +3,20 @@
     <link rel="stylesheet" href="/styles/index.css" />
   </head>
   <body>
+    <h3><a href="/">Inventory App</a></h3>
     <table>
       <tr>
         <th>Category ID</th>
         <th>Category Name</th>
         <th>Edit</th>
+        <th>Link</th>
       </tr>
       <% catData.forEach(cat => { %>
       <tr>
         <td><%= cat.id %></td>
         <td><%= cat.category_name %></td>
         <td><button>tbd</button></td>
+        <td><a href="/category/<%= cat.id %>">Link</a></td>
       </tr>
 
       <% }) %>

@@ -21,6 +21,16 @@ async function getProductsByCategory(categoryId) {
   }
 }
 
+async function getCategory(categoryId) {
+  try {
+    const result = await queries.getCategoryDims(categoryId);
+    return result[0];
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+}
+
 async function getProduct(productId) {
   try {
     const result = await queries.getSingleProduct(productId);
@@ -31,4 +41,9 @@ async function getProduct(productId) {
   }
 }
 
-module.exports = { getProductsByCategory, getProduct, getCategories };
+module.exports = {
+  getProductsByCategory,
+  getProduct,
+  getCategories,
+  getCategory,
+};
