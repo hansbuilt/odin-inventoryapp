@@ -2,25 +2,6 @@ const { Router } = require("express");
 
 const indexController = require("../controllers/indexController");
 
-const itemData = {
-  1: {
-    id: "1",
-    sku: "test",
-    product_name: "test_name",
-    product_description: "test_desc test_desc test_desc test_desc",
-    category_id_fk: "22",
-    price: "$9.99",
-    product_image: "TBD",
-  },
-};
-const catData = [
-  {
-    id: "22",
-    category_name: "test_cat22",
-  },
-  { id: "33", category_name: "test_cat33" },
-];
-
 const indexRouter = Router();
 
 indexRouter.get("/category/:category_id", async (req, res) => {
@@ -49,14 +30,4 @@ indexRouter.get("/product/:product_id", async (req, res) => {
   }
 });
 
-module.exports = { indexRouter, itemData, catData };
-
-// app.get("/", async (req, res) => {
-//   try {
-//     const catData = await indexController.getCategories();
-//     res.render("index", { catData });
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).send("Server error");
-//   }
-// });
+module.exports = { indexRouter };
