@@ -17,12 +17,21 @@ indexRouter.get("/category/:category_id", async (req, res) => {
   }
 });
 
+indexRouter.get("/product/new", (req, res) => {
+  data = {};
+  try {
+    res.render("productForm", { data });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Server error");
+  }
+});
+
 indexRouter.get("/product/:product_id", async (req, res) => {
   const productId = req.params.product_id;
 
   try {
     const data = await indexController.getProduct(productId);
-    console.log(data);
     res.render("product", { data });
   } catch (err) {
     console.log(err);
@@ -35,17 +44,7 @@ indexRouter.get("/product/:product_id/edit", async (req, res) => {
 
   try {
     const data = await indexController.getProduct(productId);
-    console.log(data);
     res.render("productForm", { data });
-  } catch (err) {
-    console.log(err);
-    res.status(500).send("Server error");
-  }
-});
-
-indexRouter.get("/product/:product_id/new", (req, res) => {
-  try {
-    res.render("productForm", {});
   } catch (err) {
     console.log(err);
     res.status(500).send("Server error");

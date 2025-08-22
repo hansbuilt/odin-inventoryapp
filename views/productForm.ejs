@@ -5,19 +5,25 @@
   <body>
     <h3>
       <a href="/">Home</a> ->
-      <a href="/category/<%= data.category_id %>"><%= data.category_name %></a>
-      -> <a href="/product/<%= data.id %>"><%= data.product_name %></a>
+      <a href="/category/<%= data.category_id  %>"><%= data.category_name %></a>
+      ->
+      <a href="/product/<%= data.id %>"><%= data.product_name || '' %></a>
       -> Edit
     </h3>
     <div id="productModal">
       <form>
-        <input type="hidden" name="product_id" id="product_id" value="id" />
+        <input
+          type="hidden"
+          name="product_id"
+          id="product_id"
+          value="<%= data.id  %>"
+        />
         <label>SKU:</label>
         <input
           type="text"
           name="sku"
           id="sku"
-          value="<%= data.sku %>"
+          value="<%= data.sku  %>"
           required
         />
         <label>Product Name:</label>
@@ -41,7 +47,7 @@
           type="number"
           name="price"
           id="price"
-          value="<%= data.price %>"
+          value="<%= data.price  %>"
           required
         />
         <label>Product Image:</label>
