@@ -7,7 +7,7 @@ async function getAllCategories() {
 
 async function getAllProductsOfCategory(category_id) {
   const { rows } = await pool.query(
-    "SELECT p.id as product_id, p.sku, p.product_name, p.product_description, c.id as category_id, c.category_name FROM products as p inner join categories as c on c.id = p.category_id WHERE c.id = $1;",
+    "SELECT p.id as product_id, p.sku, p.product_name, p.product_description, p.price, p.product_image, c.id as category_id, c.category_name FROM products as p inner join categories as c on c.id = p.category_id WHERE c.id = $1;",
     [category_id]
   );
   return rows;

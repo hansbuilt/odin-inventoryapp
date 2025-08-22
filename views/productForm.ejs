@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/styles/index.css" />
+  </head>
+  <body>
+    <h3>
+      <a href="/">Home</a> ->
+      <a href="/category/<%= data.category_id %>"><%= data.category_name %></a>
+      -> <a href="/product/<%= data.id %>"><%= data.product_name %></a>
+      -> Edit
+    </h3>
+    <div id="productModal">
+      <form>
+        <input type="hidden" name="product_id" id="product_id" value="id" />
+        <label>SKU:</label>
+        <input
+          type="text"
+          name="sku"
+          id="sku"
+          value="<%= data.sku %>"
+          required
+        />
+        <label>Product Name:</label>
+        <input
+          type="text"
+          name="product_name"
+          id="product_name"
+          value="<%= data.product_name %>"
+          required
+        />
+        <label>Product Description:</label>
+        <input
+          type="text"
+          name="product_description"
+          id="product_description"
+          value="<%= data.product_description %>"
+          required
+        />
+        <label>Price:</label>
+        <input
+          type="number"
+          name="price"
+          id="price"
+          value="<%= data.price %>"
+          required
+        />
+        <label>Product Image:</label>
+        <input
+          type="text"
+          name="product_image"
+          id="product_image"
+          value="<%= data.product_image %>"
+          required
+        />
+        <label>Category:</label>
+        <input
+          type="text"
+          name="category"
+          id="category"
+          value="<%= data.category %>"
+        />
+        <button type="submit">Save</button>
+        <button type="button" id="cancel">Cancel</button>
+      </form>
+    </div>
+  </body>
+</html>

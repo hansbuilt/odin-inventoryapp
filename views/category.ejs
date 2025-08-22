@@ -4,21 +4,38 @@
   </head>
   <body>
     <h3><a href="/">Home</a> -> <%= catData.category_name %></h3>
+    <button id="addProductBtn">Add Product</button>
+
     <table>
       <tr>
+        <th>Product ID</th>
         <th>Product SKU</th>
         <th>Product Name</th>
+        <th>Product Description</th>
+        <th>Category ID</th>
+        <th>Price</th>
+        <th>Product Image</th>
+        <th>Category Name</th>
         <th>Edit</th>
-        <th>Link</th>
+        <th>View</th>
       </tr>
       <% prodData.forEach(prod => { %>
       <tr>
+        <td><%= prod.product_id %></td>
         <td><%= prod.sku %></td>
         <td><%= prod.product_name %></td>
-        <td><button>tbd</button></td>
-        <td><a href="/product/<%= prod.product_id %>">Link</a></td>
+        <td><%= prod.product_description %></td>
+        <td><%= prod.category_id %></td>
+        <td><%= prod.price %></td>
+        <td><%= prod.product_image %></td>
+        <td><%= prod.category_name %></td>
+        <td>
+          <a href="/product/<%= prod.product_id %>/edit">Edit</a>
+        </td>
+        <td><a href="/product/<%= prod.product_id %>">View</a></td>
       </tr>
 
       <% }) %>
+    </table>
   </body>
 </html>

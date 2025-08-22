@@ -8,17 +8,16 @@
       <a href="/category/<%= data.category_id %>"><%= data.category_name %></a>
       -> <%= data.product_name %>
     </h3>
+    <a href="/product/<%= data.id %>/edit">Edit Product</a>
     <table>
       <tr>
         <th>Key</th>
         <th>Value</th>
-        <th>Edit</th>
       </tr>
       <% Object.entries(data).forEach(([key, value]) => { %>
       <tr>
         <td><%= key %></td>
         <td><%= value %></td>
-        <td><button>tbd</button></td>
       </tr>
       <% }) %>
     </table>

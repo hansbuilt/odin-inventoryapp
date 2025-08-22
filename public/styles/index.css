@@ -13,3 +13,8 @@ td {
   border-collapse: collapse;
   padding: 2px 5px;
 }
+
+form {
+  color: #00ff00;
+  display: grid;
+}
