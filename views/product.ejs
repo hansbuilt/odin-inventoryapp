@@ -9,6 +9,14 @@
       -> <%= data.product_name %>
     </h3>
     <a href="/product/<%= data.id %>/edit">Edit Product</a>
+    <form
+      method="POST"
+      action="/product/<%= data.id %>/delete"
+      onsubmit="return confirm('Delete this product?')"
+    >
+      <button type="submit">Delete Product</button>
+    </form>
+
     <table>
       <tr>
         <th>Key</th>
