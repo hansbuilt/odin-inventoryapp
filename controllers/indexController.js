@@ -64,10 +64,31 @@ async function postNewProduct({
   }
 }
 
+async function postUpdateProduct(
+  id,
+  { sku, product_name, product_description, category_id, price, product_image }
+) {
+  try {
+    const result = await queries.updateProduct(id, {
+      sku,
+      product_name,
+      product_description,
+      category_id,
+      price,
+      product_image,
+    });
+    return result;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+}
+
 module.exports = {
   getProductsByCategory,
   getProduct,
   getCategories,
   getCategory,
   postNewProduct,
+  postUpdateProduct,
 };

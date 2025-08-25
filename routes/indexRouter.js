@@ -74,7 +74,7 @@ indexRouter.get("/product/:product_id/edit", async (req, res) => {
 });
 
 indexRouter.post("/product/new", async (req, res) => {
-  console.log("BODY:", req.body);
+  //console.log("BODY:", req.body);
   const {
     sku,
     product_name,
@@ -96,6 +96,33 @@ indexRouter.post("/product/new", async (req, res) => {
     res.redirect("/");
   } catch (err) {
     console.error("POST /product/new error:", err);
+    res.status(500).send("Server error");
+  }
+});
+
+indexRouter.post("/product/:product_id/edit", async (req, res) => {
+  const productId = req.params.product_id;
+  const {
+    sku,
+    product_name,
+    product_description,
+    category_id,
+    price,
+    product_image,
+  } = req.body;
+
+  try {
+    const data = await indexController.postUpdateProduct(productId, {
+      sku,
+      product_name,
+      product_description,
+      category_id,
+      price,
+      product_image,
+    });
+    res.redirect(`/product/${productId}`);
+  } catch (err) {
+    console.log(err);
     res.status(500).send("Server error");
   }
 });
