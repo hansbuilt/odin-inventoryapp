@@ -20,7 +20,15 @@
         <td><%= cat.category_name %></td>
         <td><a href="/category/<%= cat.id %>">View</a></td>
         <td><a href="/category/<%= cat.id %>/edit">Edit</a></td>
-        <td>tbd</td>
+        <td>
+          <form
+            method="POST"
+            action="/category/<%= cat.id %>/delete"
+            onsubmit="return confirm('Delete this category?')"
+          >
+            <button type="submit">Delete Category</button>
+          </form>
+        </td>
       </tr>
 
       <% }) %>

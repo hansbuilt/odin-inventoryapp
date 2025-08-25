@@ -156,4 +156,34 @@ indexRouter.post("/product/:product_id/edit", async (req, res) => {
   }
 });
 
+indexRouter.post("/product/:product_id/delete", async (req, res) => {
+  const productId = req.params.product_id;
+
+  try {
+    const deleted = await indexController.postDeleteProduct(productId);
+    if (deleted === 0) {
+      return res.status(404).send("Product not found");
+    }
+    res.redirect("/");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
+});
+
+indexRouter.post("/category/:category_id/delete", async (req, res) => {
+  const categoryId = req.params.category_id;
+
+  try {
+    const deleted = await indexController.postDeleteCategory(categoryId);
+    if (deleted === 0) {
+      return res.status(404).send("Category not found");
+    }
+    res.redirect("/");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
+});
+
 module.exports = { indexRouter };

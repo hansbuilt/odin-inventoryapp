@@ -34,7 +34,15 @@
         <td>
           <a href="/product/<%= prod.product_id %>/edit">Edit</a>
         </td>
-        <td>tbd</td>
+        <td>
+          <form
+            method="POST"
+            action="/product/<%= prod.product_id %>/delete"
+            onsubmit="return confirm('Delete this category?')"
+          >
+            <button type="submit">Delete Category</button>
+          </form>
+        </td>
       </tr>
 
       <% }) %>

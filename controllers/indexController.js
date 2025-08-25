@@ -108,6 +108,26 @@ async function postUpdateCategory(id, { category_name }) {
   }
 }
 
+async function postDeleteCategory(categoryId) {
+  try {
+    const result = await queries.deleteSingleCategory(categoryId);
+    return result;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+}
+
+async function postDeleteProduct(productId) {
+  try {
+    const result = await queries.deleteSingleProduct(productId);
+    return result;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+}
+
 module.exports = {
   getProductsByCategory,
   getProduct,
@@ -117,4 +137,6 @@ module.exports = {
   postUpdateProduct,
   postNewCategory,
   postUpdateCategory,
+  postDeleteCategory,
+  postDeleteProduct,
 };
