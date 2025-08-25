@@ -83,7 +83,7 @@ async function updateProduct(
 async function updateCategory(id, { category_name }) {
   const { rows } = await pool.query(
     `UPDATE categories
-     SET campaign_name = $1,
+     SET category_name = $1
          
      WHERE id = $2
      RETURNING *;`,
