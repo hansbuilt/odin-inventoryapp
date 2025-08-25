@@ -4,19 +4,23 @@
   </head>
   <body>
     <h3><a href="/">Inventory App</a></h3>
+    <a href="/category/new">Add category</a>
+
     <table>
       <tr>
         <th>Category ID</th>
         <th>Category Name</th>
-        <th>Edit</th>
         <th>View</th>
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
       <% catData.forEach(cat => { %>
       <tr>
         <td><%= cat.id %></td>
         <td><%= cat.category_name %></td>
-        <td>tbd</td>
         <td><a href="/category/<%= cat.id %>">View</a></td>
+        <td><a href="/category/<%= cat.id %>/edit">Edit</a></td>
+        <td>tbd</td>
       </tr>
 
       <% }) %>

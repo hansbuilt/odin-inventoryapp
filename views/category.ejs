@@ -16,8 +16,9 @@
         <th>Price</th>
         <th>Product Image</th>
         <th>Category Name</th>
-        <th>Edit</th>
         <th>View</th>
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
       <% prodData.forEach(prod => { %>
       <tr>
@@ -29,10 +30,11 @@
         <td><%= prod.price %></td>
         <td><%= prod.product_image %></td>
         <td><%= prod.category_name %></td>
+        <td><a href="/product/<%= prod.product_id %>">View</a></td>
         <td>
           <a href="/product/<%= prod.product_id %>/edit">Edit</a>
         </td>
-        <td><a href="/product/<%= prod.product_id %>">View</a></td>
+        <td>tbd</td>
       </tr>
 
       <% }) %>
