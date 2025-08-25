@@ -59,13 +59,17 @@
           required
         />
         <label>Category:</label>
-        <input
-          type="text"
-          name="category_id"
-          id="category_id"
-          value="<%= data.category_id %>"
-          required
-        />
+        <select name="category_id" id="category_id" required>
+          <option disabled <%= !data.category_id ? "selected" : "" %>>-- Select a category --</option>
+
+          <% categories.forEach(cat => { %>
+          <option value="<%= cat.id %>"
+            <%= data.category_id == cat.id ? "selected" : "" %>> <%=
+            cat.category_name %>
+          </option>
+          <% }) %>
+        </select>
+
         <button type="submit"><%= data.id ? 'Update' : 'Save' %></button>
         <button type="button" id="cancel">Cancel</button>
       </form>
