@@ -109,4 +109,10 @@ module.exports = {
   getAllProductsOfCategory,
   getSingleProduct,
   getCategoryDims,
+  createSingleProduct,
+  createCategory,
+  updateProduct,
+  updateCategory,
+  deleteSingleProduct,
+  deleteSingleCategory,
 };
