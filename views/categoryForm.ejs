@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/styles/index.css" />
+  </head>
+  <body>
+    <h3>
+      <a href="/">Home</a> ->
+      <a href="/category/<%= catData.id  %>"><%= catData.category_name %></a>
+      -> Edit
+    </h3>
+    <div id="productModal">
+      <form
+        method="POST"
+        action="<%= catData.id ? '/category/' + catData.id + '/edit' : '/category/new' %>"
+      >
+        <% if (catData.id) { %>
+        <input type="hidden" name="category_id" value="<%= catData.id %>" />
+        <% } %>
+        <label>Category Name:</label>
+        <input
+          type="text"
+          name="category_name"
+          id="category_name"
+          value="<%= catData.category_name %>"
+          required
+        />
+        <button type="submit"><%= catData.id ? 'Update' : 'Save' %></button>
+        <button type="button" id="cancel">Cancel</button>
+      </form>
+    </div>
+  </body>
+</html>

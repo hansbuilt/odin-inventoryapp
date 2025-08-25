@@ -100,6 +100,35 @@ indexRouter.post("/product/new", async (req, res) => {
   }
 });
 
+indexRouter.post("/category/new", async (req, res) => {
+  const { category_name } = req.body;
+  try {
+    const data = await indexController.postNewCategory({
+      category_name,
+    });
+    res.redirect("/");
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Server error");
+  }
+});
+
+indexRouter.post("/category/:category_id/edit", async (req, res) => {
+  const categoryId = req.params.category_id;
+  const { category_name } = req.body;
+  // console.log("BODY:", req.body);
+
+  try {
+    const data = await indexController.postUpdateCategory(categoryId, {
+      category_name,
+    });
+    res.redirect(`/category/${categoryId}`);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Server error");
+  }
+});
+
 indexRouter.post("/product/:product_id/edit", async (req, res) => {
   const productId = req.params.product_id;
   const {

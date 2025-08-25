@@ -84,6 +84,30 @@ async function postUpdateProduct(
   }
 }
 
+async function postNewCategory({ category_name }) {
+  try {
+    const result = await queries.createCategory({
+      category_name,
+    });
+    return result;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+}
+
+async function postUpdateCategory(id, { category_name }) {
+  try {
+    const result = await queries.updateCategory(id, {
+      category_name,
+    });
+    return result;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+}
+
 module.exports = {
   getProductsByCategory,
   getProduct,
@@ -91,4 +115,6 @@ module.exports = {
   getCategory,
   postNewProduct,
   postUpdateProduct,
+  postNewCategory,
+  postUpdateCategory,
 };
