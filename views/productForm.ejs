@@ -7,11 +7,11 @@
       <a href="/">Home</a> ->
       <a href="/category/<%= data.category_id  %>"><%= data.category_name %></a>
       ->
-      <a href="/product/<%= data.id %>"><%= data.product_name || '' %></a>
+      <a href="/product/<%= data.id %>"><%= data.product_name %></a>
       -> Edit
     </h3>
     <div id="productModal">
-      <form>
+      <form method="POST" action="/product/new">
         <input
           type="hidden"
           name="product_id"
@@ -61,9 +61,10 @@
         <label>Category:</label>
         <input
           type="text"
-          name="category"
-          id="category"
-          value="<%= data.category %>"
+          name="category_id"
+          id="category_id"
+          value="<%= data.category_id %>"
+          required
         />
         <button type="submit">Save</button>
         <button type="button" id="cancel">Cancel</button>
